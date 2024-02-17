@@ -1,44 +1,43 @@
-var loginModal = null;
-var registerModal = null;
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the modals
+    var loginModal = document.getElementById("loginModal");
+    var registerModal = document.getElementById("registerModal");
 
-function openLoginModal() {
-    if (!loginModal) {
-        loginModal = createModal("Login");
-        document.body.appendChild(loginModal);
+    // Get the buttons that open the modals
+    var loginBtn = document.getElementById("loginBtn");
+    var registerBtn = document.getElementById("registerBtn");
+
+    // Get the <span> element that closes the modals
+    var closeBtns = document.getElementsByClassName("close");
+
+    // Function to close all modals
+    function closeModals() {
+        loginModal.style.display = "none";
+        registerModal.style.display = "none";
     }
-}
 
-function openRegisterModal() {
-    if (!registerModal) {
-        registerModal = createModal("Register");
-        document.body.appendChild(registerModal);
+    // When the user clicks the buttons, open the modals 
+    loginBtn.onclick = function() {
+        closeModals(); // Close all modals
+        loginModal.style.display = "block"; // Open login modal
     }
-}
 
-function createModal(title) {
-    var modal = document.createElement("div");
-    modal.className = "modal";
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close" onclick="closeModal(this)">&times;</span>
-            <h2>${title}</h2>
-            <form action="${title.toLowerCase()}_process.php" method="post">
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                ${title === "Register" ? '<input type="email" name="email" placeholder="Email" required>' : ''}
-                <button type="submit">${title}</button>
-            </form>
-        </div>
-    `;
-    return modal;
-}
-
-function closeModal(closeBtn) {
-    var modal = closeBtn.parentElement.parentElement;
-    modal.parentNode.removeChild(modal);
-    if (modal === loginModal) {
-        loginModal = null;
-    } else if (modal === registerModal) {
-        registerModal = null;
+    registerBtn.onclick = function() {
+        closeModals(); // Close all modals
+        registerModal.style.display = "block"; // Open register modal
     }
-}
+
+    // When the user clicks on <span> (x), close the modals
+    for (var i = 0; i < closeBtns.length; i++) {
+        closeBtns[i].onclick = function() {
+            closeModals(); // Close all modals
+        }
+    }
+
+    // When the user clicks anywhere outside of the modals, close them
+    window.onclick = function(event) {
+        if (event.target == loginModal || event.target == registerModal) {
+            closeModals(); // Close all modals
+        }
+    }
+});

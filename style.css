@@ -17,6 +17,11 @@
     text-decoration: 0;
 
 
+.modal {
+      display: none; /* Cache les modaux par défaut */
+  }
+
+
 }
 h1 {
     margin-bottom: 10px;
