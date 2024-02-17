@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <!-- Vos styles CSS -->
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +14,6 @@
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit">Se connecter</button>
     </form>
-    <!-- Autres éléments de votre page -->
+
 </body>
 </html>
